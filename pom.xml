@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.twitter</groupId>
+  <artifactId>zipkin</artifactId>
+  <version>1.0.1-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+
+  <name>zipkin</name>
+
+  <modules>
+    <module>zipkin-cassandra</module>
+    <module>zipkin-collector-core</module>
+    <module>zipkin-collector-scribe</module>
+    <module>zipkin-collector-service</module>
+    <module>zipkin-common</module>
+    <module>zipkin-hadoop</module>
+    <module>zipkin-hadoop-job-runner</module>
+    <module>zipkin-kafka</module>
+    <module>zipkin-query-core</module>
+    <module>zipkin-query-service</module>
+    <module>zipkin-redis</module>
+    <module>zipkin-scrooge</module>
+    <module>zipkin-test</module>
+    <module>zipkin-thrift</module>
+    <module>zipkin-web</module>
+  </modules>
+
+  <scm>
+    <connection>scm:git:git@github.com:twitter/zipkin.git</connection>
+  </scm>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.12</version>
+          <!--<configuration>-->
+            <!--<forkMode>always</forkMode>-->
+          <!--</configuration>-->
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>2.1.2</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>package</phase>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+    </dependencies>
+  </dependencyManagement>
+  <repositories>
+      <repository>
+          <id>ibiblio</id>
+          <name>ibiblio</name>
+          <url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+          <layout>default</layout>
+      </repository>
+      <repository>
+          <id>twittercom</id>
+          <name>twitter.com</name>
+          <url>http://maven.twttr.com/</url>
+          <layout>default</layout>
+      </repository>
+      <repository>
+          <id>powermockapi</id>
+          <name>powermock-api</name>
+          <url>http://powermock.googlecode.com/svn/repo/</url>
+          <layout>default</layout>
+      </repository>
+      <repository>
+          <id>scalatoolsorg</id>
+          <name>scala-tools.org</name>
+          <url>http://scala-tools.org/repo-releases/</url>
+          <layout>default</layout>
+      </repository>
+      <repository>
+          <id>testingscalatoolsorg</id>
+          <name>testing.scala-tools.org</name>
+          <url>http://scala-tools.org/repo-releases/testing/</url>
+          <layout>default</layout>
+      </repository>
+      <repository>
+          <id>oauthnet</id>
+          <name>oauth.net</name>
+          <url>http://oauth.googlecode.com/svn/code/maven/</url>
+          <layout>default</layout>
+      </repository>
+      <repository>
+          <id>downloadjavanet</id>
+          <name>download.java.net</name>
+          <url>http://download.java.net/maven/2/</url>
+          <layout>default</layout>
+      </repository>
+      <repository>
+          <id>atlassian</id>
+          <name>atlassian</name>
+          <url>https://m2proxy.atlassian.com/repository/public/</url>
+          <layout>default</layout>
+      </repository>
+      <repository>
+          <id>jboss</id>
+          <name>jboss</name>
+          <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+          <layout>default</layout>
+      </repository>
+  </repositories>
+</project>
