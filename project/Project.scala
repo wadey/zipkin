@@ -29,7 +29,8 @@ object Zipkin extends Build {
     version := "1.0.1-SNAPSHOT",
     crossPaths := false            /* Removes Scala version from artifact name */
   )
-  def defaultSettings = Project.defaultSettings ++ StandardProject.newSettings ++ TravisCiRepos.newSettings ++ zipkinSettings
+
+  def defaultSettings = Project.defaultSettings ++ StandardProject.newSettings ++ TravisCiRepos.newSettings ++ zipkinSettings ++ net.virtualvoid.sbt.graph.Plugin.graphSettings
 
   lazy val zipkin =
     Project(
@@ -81,6 +82,7 @@ object Zipkin extends Build {
         </dependencies>,
       mergeStrategy in assembly := {
         case inf if inf.startsWith("META-INF/") || inf.startsWith("project.clj") => MergeStrategy.discard
+        case inf if inf.startsWith("org/apache/commons/beanutils") || inf.startsWith("org/apache/commons/collections") => MergeStrategy.first
         case _ => MergeStrategy.deduplicate
       }
     ).dependsOn(thrift)
